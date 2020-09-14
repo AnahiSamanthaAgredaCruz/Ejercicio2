@@ -1,32 +1,28 @@
-﻿namespace ModeloJWT.Models
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace ModeloJWT.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-        public class Student
-        {
-            public int ID { get; set; }
-            [Required]
-            [StringLength(50)]
-            [Display(Name = "Last Name")]
-            public string LastName { get; set; }
-            [Required]
-            [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
-            [Column("FirstName")]
-            [Display(Name = "First Name")]
-            public string FirstMidName { get; set; }
-            [DataType(DataType.Date)]
-            [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-            [Display(Name = "Enrollment Date")]
-            public DateTime EnrollmentDate { get; set; }
-            [Display(Name = "Full Name")]
-            public string FullName
-            {
-                get
-                {
-                    return LastName + ", " + FirstMidName;
-                }
-            }
-        }
+    public class Student
+    {
+        
+        public int StudentID { get; set; }
+
+        [StringLength(30)]
+        [Required(ErrorMessage = "You must enter the filed{0}")]
+
+        public string LastName { get; set; }
+
+
+        [StringLength(30, ErrorMessage = "The filed{0} must contain betwen {2} and {1} characters", MinimumLength = 2)]
+        [Required(ErrorMessage = "You must enter the filed{0}")]
+
+        public string FirstName { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime EnrollmentDate { get; set; }
+
+
+    }
 }

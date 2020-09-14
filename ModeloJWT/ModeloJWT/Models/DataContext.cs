@@ -3,11 +3,7 @@
     using System.Data.Entity;
     public class DataContext : DbContext
     {
-        public DataContext() : base("DefaultConnection")
-        {
-
-        }
-
-        public System.Data.Entity.DbSet<ModeloJWT.Models.Student> Students { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Student> Students { get; set; }
     }
 }
