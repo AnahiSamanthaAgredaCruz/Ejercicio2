@@ -18,11 +18,22 @@ namespace Ejercicioo2.Models
         [ForeignKey("Student")]
         public int StudentID { get; set; }
         public int CourseID { get; set; }
-        [DisplayFormat(NullDisplayText = "No grade")]
-        public Grade? Grade { get; set; }
+
+        private Grade? grade;
+
+        public Grade? GetGrade()
+        {
+            return grade;
+        }
+
+        public void SetGrade(Grade? value)
+        {
+            grade = value;
+        }
+
         public virtual Course Course { get; set; }
         public virtual Student Student { get; set; }
 
-       
+        
     }
 }
